@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { useQuiz } from "../context/QuizContext";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 import triangle from "../assets/Images/triangle.png";
 import rectangle from "../assets/Images/rectangle.png";
@@ -30,7 +30,7 @@ const QuizPage = () => {
 
   const handleCheckboxChange = (id) => {
     setSelectedOption(id);
-    setError(false); // Clear error if an option is selected
+    setError(false); 
     updateAnswer(questionId, id);
 
     const storedAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
@@ -49,12 +49,9 @@ const QuizPage = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="shadow-md flex flex-col items-center justify-center bg-blue-50 p-6 rounded-lg">
-        {/* Question */}
         <h2 className="text-lg font-bold text-gray-800 text-center mb-6">
           1. Look at the pictures below and choose Rectangle :-
         </h2>
-
-        {/* Options */}
         <div className="grid grid-cols-2 gap-6 mb-8">
           {options.map((option) => (
             <div
@@ -78,14 +75,12 @@ const QuizPage = () => {
           ))}
         </div>
 
-        {/* Error Message */}
         {error && (
           <p className="text-red-500 text-sm mb-4">
             Please select an option before proceeding.
           </p>
         )}
 
-        {/* Buttons */}
         <div className="flex justify-end gap-3 w-full max-w-md">
           <button
           disabled

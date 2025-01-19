@@ -1,9 +1,9 @@
-import React from "react";
+
 import { useQuiz } from "../context/QuizContext";
 import { Link } from "react-router-dom";
 
 const ResultPage = () => {
-  const { answers, resetAnswers } = useQuiz(); // Access all answers and reset function from context
+  const { answers, resetAnswers } = useQuiz(); 
 
   const congratsImage =
     "https://img.freepik.com/premium-vector/congratulations-clipart-cartoon-vector_705090-4321.jpg?semt=ais_hybrid";
@@ -13,11 +13,11 @@ const ResultPage = () => {
   const calculateScore = (answers, correctAnswer) => {
     let score = 0;
 
-    // Iterate through the keys in answers
+    
     for (let key in answers) {
-      // Check if the value matches in both objects
+    
       if (answers[key] === correctAnswer[key]) {
-        score++; // Increment score for a correct match
+        score++; 
       }
     }
 
@@ -26,19 +26,19 @@ const ResultPage = () => {
 
   const totalScore = calculateScore(answers, correctAnswer);
 
-  // Clear localStorage
+  
   localStorage.clear();
 
-  // Reset answers when user clicks "Try Again" or "Re-Start"
+  
   const handleReset = () => {
-    resetAnswers(); // Clear context answers
+    resetAnswers(); 
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="md:w-1/2 shadow-md flex flex-col items-center justify-center bg-green-100 p-6">
         {totalScore === 5 ? (
-          // Congratulation message for full score
+         
           <div className="text-center">
             <h2 className="text-3xl font-bold text-green-600 mb-6">
               🎉 Congratulations! 🎉
@@ -52,7 +52,7 @@ const ResultPage = () => {
               className="w-48 h-48 mx-auto mb-6"
             />
             <div className="flex gap-2 justify-center items-center">
-              {/* Re-Start Button */}
+             
               <Link
                 to="/quiz"
                 className="btn bg-sky-400 hover:bg-sky-500 text-white mt-4 w-32 px-6 py-2 rounded-md font-semibold"
@@ -60,7 +60,7 @@ const ResultPage = () => {
               >
                 Re-Start
               </Link>
-              {/* Go To Home Button */}
+             
               <Link
                 to="/"
                 className="btn bg-sky-400 hover:bg-sky-500 text-white mt-4 w-32 px-6 py-2 rounded-md font-semibold"
@@ -71,7 +71,7 @@ const ResultPage = () => {
             </div>
           </div>
         ) : (
-          // Regular result content for less than full score
+          
           <div>
             <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
               Quiz Results: {totalScore}/5
@@ -84,7 +84,7 @@ const ResultPage = () => {
                 Total Wrong Answer : {5 - totalScore}
               </h3>
               <div className="flex gap-4 justify-center">
-                {/* Try Again Button */}
+              
                 <Link
                   to="/quiz"
                   className="btn bg-sky-400 hover:bg-sky-500 text-white mt-4 w-32 px-6 py-2 rounded-md font-semibold"
